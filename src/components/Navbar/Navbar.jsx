@@ -8,6 +8,9 @@ import {
   Close,
   ExpandMore,
 } from "@mui/icons-material";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +27,7 @@ const NavBar = () => {
   return (
     <nav className="bg-white shadow-md relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 relative">
+        <div className="flex justify-between items-center h-16 relative text-[14px]">
           {/* Hamburger Menu */}
           <div className="lg:hidden">
             <button
@@ -41,7 +44,7 @@ const NavBar = () => {
           </div>
 
           {/* Left Menu */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4 font-medium uppercase">
             <a href="#" className="text-gray-700 hover:text-gray-900">
               Home
             </a>
@@ -50,15 +53,15 @@ const NavBar = () => {
             </a>
 
             {/* Products Dropdown */}
-            <div className="relative">
+            <div className="relative ">
               <button
                 onClick={toggleProductsMenu}
-                className="flex items-center text-gray-700 hover:text-gray-900"
+                className="flex items-center  text-gray-700 hover:text-gray-900 font-medium uppercase"
               >
                 Products <ExpandMore />
               </button>
               {isProductsOpen && (
-                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50">
+                <div className="absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50 text-[12px]">
                   <a
                     href="#"
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -96,22 +99,22 @@ const NavBar = () => {
           </div>
 
           {/* Right Icons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 ">
             <button className="text-gray-700 hover:text-gray-900 lg:hidden">
-              <ShoppingCart />
+              <LocalMallOutlinedIcon />
             </button>
             <div className="hidden lg:flex items-center space-x-4">
               <button className="text-gray-700 hover:text-gray-900">
                 <Search />
               </button>
               <button className="text-gray-700 hover:text-gray-900">
-                <AccountCircle />
+                <PersonOutlineOutlinedIcon />
               </button>
               <button className="text-gray-700 hover:text-gray-900">
-                <Favorite />
+                <FavoriteBorderOutlinedIcon />
               </button>
               <button className="text-gray-700 hover:text-gray-900">
-                <ShoppingCart />
+                <LocalMallOutlinedIcon />
               </button>
             </div>
           </div>
@@ -119,8 +122,8 @@ const NavBar = () => {
 
         {/* Dropdown Menu for small screens */}
         {isOpen && (
-          <div className="lg:hidden">
-            <div className="flex flex-col space-y-4 py-4">
+          <div className="lg:hidden font-medium uppercase">
+            <div className="flex flex-col space-y-4 py-4  text-[14px]">
               <a href="#" className="text-gray-700 hover:text-gray-900">
                 Home
               </a>
@@ -132,12 +135,12 @@ const NavBar = () => {
               <div>
                 <button
                   onClick={toggleProductsMenu}
-                  className="flex items-center text-gray-700 hover:text-gray-900"
+                  className="flex items-center text-gray-700 hover:text-gray-900 uppercase text-[14px]"
                 >
                   Products <ExpandMore />
                 </button>
                 {isProductsOpen && (
-                  <div className="mt-2 space-y-2">
+                  <div className="mt-2 space-y-2 text-[12px]">
                     <a
                       href="#"
                       className="block text-gray-700 hover:bg-gray-100"

@@ -4,9 +4,12 @@ export default {
   theme: {
     extend: {
       height: {
-        'custom-calc': 'calc(100vh - 80px)',
+        "custom-calc": "calc(100vh - 80px)",
+      },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
+};
