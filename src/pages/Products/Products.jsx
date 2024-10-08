@@ -9,7 +9,7 @@ const Products = () => {
   const [maxPrice, setMaxPrice] = useState(1000)
   const [sort,setSort] = useState(null)
   return (
-    <div className='px-[30px] py-[50px] flex'>
+    <div className='mt-16 px-[30px] py-[50px] flex'>
       <div className='flex-[1] sticky h-[100%] top-[50px]'>
         <div className='mb-[30px]'>
           <h2 className=' font-extrabold mb-[20px]'>Product Categories</h2>

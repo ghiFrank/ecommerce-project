@@ -7,38 +7,3 @@ body {
     @apply font-montserrat;
 }
 
-.colo{
-    flex:1;
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-}
-
-.colo-l{
-    flex:2
-}
-
-.rowo{
-    flex: 1;
-    display: flex;
-    gap: 10px;
-    position: relative;
-    overflow: hidden;
-
-    button{
-        position: absolute;
-        width: fit-content;
-        min-width: 100px;
-        height: 50px;
-        padding: 10px;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        background-color: antiquewhite;
-        border: solid 1px black;
-        text-transform: uppercase;
-        font-weight: 500;
-    }
-}
