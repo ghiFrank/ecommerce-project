@@ -5,8 +5,8 @@ import WestIcon from "@mui/icons-material/West";
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const data = [
-    "/images/Slide1.jpg",
-    "/images/Slide2.jpg",
+    "/images/slider-mybrand.jpg",
+    "/images/slider2-mybrand.jpg",
   ];
 
   const prevSlide = () => {
@@ -18,16 +18,16 @@ const Slider = () => {
   };
 
   return (
-    <div className="relative h-custom-calc w-[100vw] overflow-hidden">
+    <div className="relative h-[100vh] w-full overflow-hidden ">
       {/* Image slider */}
       <div
-        className="w-[300vw] h-[100%] flex transition-all ease-in duration-[800ms]"
+        className="w-[300vw] h-full flex transition-all ease-in duration-[800ms]"
         style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
       >
         {data.map((imgSrc, index) => (
           <img
             key={index}
-            className="w-[100vw] h-[100%] object-cover"
+            className="w-[100vw] h-full object-cover"
             src={imgSrc}
             alt={`Slide ${index + 1}`}
           />

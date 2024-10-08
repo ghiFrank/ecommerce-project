@@ -9,6 +9,12 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
+      colors: {
+        customGray: "rgba(0, 0, 0, 0.8)", 
+      },
+      lineHeight: {
+        custom: "18px", 
+      },
     },
   },
   plugins: [],
