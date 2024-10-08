@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Card({item}) {
   return (
     <Link to={`/product/${item.id}`}>
-        <div className='w-[280px] flex flex-col gap-[10px]'>
+        <div className='w-[280px] flex flex-col gap-[10px] mb-[50px]'>
         <div className='w-full h-[400px] overflow-hidden relative group'>
            {item.isNew && <span className='absolute top-[5px] left-[5px] bg-white text-teal-600 px-[5px] py-[3px] z-10 font-[500] text-[12px]'>New Season</span>}
           <img
