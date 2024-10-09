@@ -25,7 +25,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="absolute top-0 left-0 w-full leading-custom z-50 bg-transparent hover:bg-white  transition-all duration-300 border-b border-b-gray-400">
+    <nav className="sticky top-0 w-full leading-custom z-50 bg-white transition-all duration-300 border-b border-b-gray-400 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 relative text-[14px] text-customGray transition-all duration-300">
           {/* Hamburger Menu */}
@@ -51,7 +51,10 @@ const NavBar = () => {
             >
               Home
             </a>
-            <a href="#" className="text-customGray  transition-all duration-300">
+            <a
+              href="#"
+              className="text-customGray  transition-all duration-300"
+            >
               Shop
             </a>
 
@@ -81,10 +84,16 @@ const NavBar = () => {
               )}
             </div>
 
-            <a href="#" className="text-customGray  transition-all duration-300">
+            <a
+              href="#"
+              className="text-customGray  transition-all duration-300"
+            >
               About
             </a>
-            <a href="#" className="text-customGray  transition-all duration-300">
+            <a
+              href="#"
+              className="text-customGray  transition-all duration-300"
+            >
               Contact
             </a>
           </div>
@@ -115,10 +124,16 @@ const NavBar = () => {
         {isOpen && (
           <div className="lg:hidden font-medium uppercase">
             <div className="flex flex-col space-y-4 py-4 text-[14px]">
-              <a href="#" className="text-customGray  transition-all duration-300">
+              <a
+                href="#"
+                className="text-customGray  transition-all duration-300"
+              >
                 Home
               </a>
-              <a href="#" className="text-customGray transition-all duration-300">
+              <a
+                href="#"
+                className="text-customGray transition-all duration-300"
+              >
                 Shop
               </a>
 
@@ -160,10 +175,16 @@ const NavBar = () => {
                 )}
               </div>
 
-              <a href="#" className="text-customGray  transition-all duration-300">
+              <a
+                href="#"
+                className="text-customGray  transition-all duration-300"
+              >
                 About
               </a>
-              <a href="#" className="text-customGray  transition-all duration-300">
+              <a
+                href="#"
+                className="text-customGray  transition-all duration-300"
+              >
                 Contact
               </a>
             </div>

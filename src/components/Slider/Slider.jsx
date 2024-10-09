@@ -5,8 +5,8 @@ import WestIcon from "@mui/icons-material/West";
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const data = [
-    "/images/slider-mybrand.jpg",
-    "/images/slider2-mybrand.jpg",
+    "/images/slider1-mybrand.webp",
+    "/images/slider2-mybrand.webp",
   ];
 
   const prevSlide = () => {
