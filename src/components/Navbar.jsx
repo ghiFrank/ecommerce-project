@@ -11,9 +11,12 @@ import {
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import Cart from "./Cart"
 
 const NavBar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -113,13 +116,13 @@ const NavBar = () => {
               <button className="text-customGray transition-all duration-300">
                 <FavoriteBorderOutlinedIcon />
               </button>
-              <button className="text-customGray  transition-all duration-300">
+              <button className="text-customGray  transition-all duration-300" onClick={()=>setIsCartOpen(!isCartOpen)}>
                 <LocalMallOutlinedIcon />
               </button>
             </div>
           </div>
         </div>
-
+        {isCartOpen && <Cart/>}
         {/* Dropdown Menu for small screens */}
         {isOpen && (
           <div className="lg:hidden font-medium uppercase">
