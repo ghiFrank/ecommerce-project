@@ -10,19 +10,19 @@ const FeaturedProducts = ({type}) => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.REACT_APP_API_URL}/products?populate=*`,
+          `${import.meta.env.VITE_API_URL}/products/`,
           {
             headers: {
-              Authorization: `bearer ${import.meta.env.REACT_APP_API_TOKEN}`,
+              Authorization: `bearer ${import.meta.env.VITE_API_TOKEN}`,
             },
           }
         );
-        console.log(res)
+        setData(res.data.data)
       } catch (err) {
         console.log(err);
       }
     };
-  
+
     fetchData();
   }, []);
 

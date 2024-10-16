@@ -49,7 +49,7 @@ const NavBar = () => {
           {/* Left Menu */}
           <div className="hidden lg:flex items-center space-x-4 font-medium uppercase">
             <a
-              href="#"
+              href="/"
               className="text-customGray  transition-all duration-300"
             >
               Home
