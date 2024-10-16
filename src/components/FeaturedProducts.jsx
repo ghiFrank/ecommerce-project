@@ -1,43 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
-
+import axios from "axios"
 const FeaturedProducts = ({type}) => {
 
-  const data =[
-    {
-      id: 1,
-      img:"https://images.pexels.com/photos/1485166/pexels-photo-1485166.jpeg",
-      img2:"https://images.pexels.com/photos/1755386/pexels-photo-1755386.jpeg",
-      title: "Long Sleeve Graphic T-shirt",
-      isNew: true,
-      oldPrice: 19,
-      price: 12,
-    },
-    {
-      id: 2,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 2",
-      isNew: true,
-      oldPrice: 16,
-      price: 10,
-    },
-    {
-      id: 3,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 3",
-      isNew: true,
-      oldPrice: 16,
-      price: 10,
-    },
-    {
-      id: 4,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 4",
-      isNew: false,
-      oldPrice: 16,
-      price: 10,
-    },
-  ]
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.REACT_APP_API_URL}/products?populate=*`,
+          {
+            headers: {
+              Authorization: `bearer ${import.meta.env.REACT_APP_API_TOKEN}`,
+            },
+          }
+        );
+        console.log(res)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  
+    fetchData();
+  }, []);
+
   return (
     <div className=' mt-[100px] mb-[200px] mx-10'>
       <div className='flex items-center justify-between mb-[50px] text-justify'>
