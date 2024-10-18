@@ -1,45 +1,15 @@
 import React from 'react'
 import Card from './Card'
+import useFetch from '../hooks/useFetch'
 
-const List = () => {
-  const data =[
-    {
-      id: 1,
-      img:"https://images.pexels.com/photos/1485166/pexels-photo-1485166.jpeg",
-      img2:"https://images.pexels.com/photos/1755386/pexels-photo-1755386.jpeg",
-      title: "Long Sleeve Graphic T-shirt",
-      isNew: true,
-      oldPrice: 19,
-      price: 12,
-    },
-    {
-      id: 2,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 2",
-      isNew: true,
-      oldPrice: 16,
-      price: 10,
-    },
-    {
-      id: 3,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 3",
-      isNew: true,
-      oldPrice: 16,
-      price: 10,
-    },
-    {
-      id: 4,
-      img:"https://images.pexels.com/photos/1306248/pexels-photo-1306248.jpeg",
-      title: "Long Sleeve Graphic T-shirt 4",
-      isNew: false,
-      oldPrice: 16,
-      price: 10,
-    },
-  ]
+const List = ({subCats,maxPrice,sort,catId}) => {
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filter][categories][id]=${catId}${subCats.map(item=>`&[filters][sub_categories][id][$eq]=${item}`)}}
+    &[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
+  );
   return (
     <div className="flex justify-between flex-wrap">
-      {data?.map(item=>(
+      {loading ? "loading" : data?.map(item=>(
       <Card item={item} key={item.id}/>
     ))}
     </div>
