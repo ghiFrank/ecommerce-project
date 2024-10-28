@@ -13,7 +13,7 @@ const Categories = () => {
         />
         <button className="absolute inset-0 m-auto w-44 h-10 flex items-center justify-center bg-white  text-black ">
           <Link
-            to="products/1"
+            to="products/2"
             className="relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-2px] after:transition-all after:duration-300 hover:after:w-[50%] hover:after:left-[25%]"
           >
             Accessories
@@ -30,7 +30,7 @@ const Categories = () => {
         />
         <button className="absolute inset-0 m-auto w-44 h-10 flex items-center justify-center bg-white  text-black ">
           <Link
-            to="products/1"
+            to="products/8"
             className="relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-2px] after:transition-all after:duration-300 hover:after:w-[50%] hover:after:left-[25%]"
           >
             Sneakers
@@ -46,7 +46,7 @@ const Categories = () => {
         />
         <button className="absolute inset-0 m-auto w-44 h-10 flex items-center justify-center bg-white  text-black ">
           <Link
-            to="products/1"
+            to="products/4"
             className="relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-2px] after:transition-all after:duration-300 hover:after:w-[50%] hover:after:left-[25%]"
           >
             Mocassins
@@ -63,7 +63,7 @@ const Categories = () => {
         />
         <button className="absolute inset-0 m-auto w-44 h-10 flex items-center justify-center bg-white  text-black ">
           <Link
-            to="products/1"
+            to="products/5"
             className="relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-black after:left-0 after:bottom-[-2px] after:transition-all after:duration-300 hover:after:w-[50%] hover:after:left-[25%]"
           >
             Boots

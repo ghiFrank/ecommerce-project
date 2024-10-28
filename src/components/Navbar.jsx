@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import {
-  ShoppingCart,
-  Favorite,
-  AccountCircle,
   Search,
   Menu,
   Close,
@@ -55,7 +52,7 @@ const NavBar = () => {
               Home
             </a>
             <a
-              href="#"
+              href="/products/1"
               className="text-customGray  transition-all duration-300"
             >
               Shop
@@ -116,25 +113,28 @@ const NavBar = () => {
               <button className="text-customGray transition-all duration-300">
                 <FavoriteBorderOutlinedIcon />
               </button>
-              <button className="text-customGray  transition-all duration-300" onClick={()=>setIsCartOpen(!isCartOpen)}>
+              <button
+                className="text-customGray  transition-all duration-300"
+                onClick={() => setIsCartOpen(!isCartOpen)}
+              >
                 <LocalMallOutlinedIcon />
               </button>
             </div>
           </div>
         </div>
-        {isCartOpen && <Cart/>}
+        {isCartOpen && <Cart />}
         {/* Dropdown Menu for small screens */}
         {isOpen && (
           <div className="lg:hidden font-medium uppercase">
             <div className="flex flex-col space-y-4 py-4 text-[14px]">
               <a
-                href="#"
+                href="/"
                 className="text-customGray  transition-all duration-300"
               >
                 Home
               </a>
               <a
-                href="#"
+                href="/products/1"
                 className="text-customGray transition-all duration-300"
               >
                 Shop

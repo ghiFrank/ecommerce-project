@@ -8,7 +8,7 @@ const Products = () => {
 
   const catId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort,setSort] = useState(null);
+  const [sort,setSort] = useState("asc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
   const {data,loading,error} = useFetch(`/sub-categories?[filters][categories][id][$eq]=${catId}`)
@@ -84,7 +84,7 @@ const Products = () => {
       <div className="flex-[3]">
         <img
           className="w-[100%] h-[300px] object-cover mb-[50px]"
-          src="https://images.pexels.com/photos/267242/pexels-photo-267242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="/images/banner.webp"
           alt=""
         />
         <List catId={catId} maxPrice={maxPrice} sort={sort}subCats={selectedSubCats} />

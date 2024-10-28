@@ -1,96 +1,114 @@
-import React, { useState } from 'react'
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import BalanceIcon from '@mui/icons-material/Balance';
-import { useParams } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
+import React, { useState } from "react";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import BalanceIcon from "@mui/icons-material/Balance";
+import { useParams } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartReducer";
 
 const Product = () => {
   const id = useParams().id;
   const [selectedImg, setSelectedImg] = useState("image");
   const [quantity, setQuantity] = useState(1);
 
-   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-   
+  const dispatch = useDispatch();
+
+  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+
   return (
-    
-    <div className="pt-[20px] pr-[50px] flex gap-[50px]">
+    <div className="pt-5 px-4 md:px-10 flex flex-col lg:flex-row gap-10 lg:gap-20">
       {loading ? (
         "loading"
       ) : (
         <>
-          <div className="flex-[1] flex gap-[20px]">
-            <div className="flex-[1]">
+          {/* Image section */}
+          <div className="flex-[1] flex flex-col lg:flex-row gap-5">
+            <div className="flex-[1] flex lg:flex-col gap-5 lg:gap-0">
               <img
-                className="w-full h-[150px] object-cover cursor-pointer mb-[10px]"
+                className="w-full h-[150px] object-cover cursor-pointer mb-2"
                 src={`${import.meta.env.VITE_API_UP_URL + data?.image.url}`}
                 alt=""
-                onClick={(e) => setSelectedImg("image")}
+                onClick={() => setSelectedImg("image")}
               />
               <img
                 className="w-full h-[150px] object-cover cursor-pointer"
                 src={`${import.meta.env.VITE_API_UP_URL + data?.image2.url}`}
                 alt=""
-                onClick={(e) => setSelectedImg("image2")}
+                onClick={() => setSelectedImg("image2")}
               />
             </div>
             <div className="flex-[5]">
               <img
-                className="w-full max-h-[800px] object-cover"
-                src={`${import.meta.env.VITE_API_UP_URL + data?.[selectedImg].url}`}
+                className="w-full max-h-[500px] lg:max-h-[800px] object-cover"
+                src={`${
+                  import.meta.env.VITE_API_UP_URL + data?.[selectedImg].url
+                }`}
                 alt=""
               />
             </div>
           </div>
-          <div className="flex-[1] flex flex-col gap-[30px]">
-            <h1 className="text-[30px] font-bold">Product Name</h1>
-            <span className="text-[30px] text-[#2879FE] font-[500]">$199</span>
-            <p className="text-[18px] font-[300] text-justify">
-              Welcome to the Sword and Shield / Greatsword PvE Build Guide! This
-              is the big brawler Tank in Throne and Liberty. The build leverages
-              the strengths of both weapons for a ton of extra Health and Heavy
-              Attack Chance. Sword and Shield / Greatswords has some of the best
-              AoE farming potential in the game due to passives like Spectrum of
-              Agony and active skills that can cleave off each other such as
-              Frost Cleaving and Ice Tornado.
+
+          {/* Product details section */}
+          <div className="flex-[1] flex flex-col gap-8 lg:gap-10">
+            <h1 className="text-2xl lg:text-3xl font-bold">{data?.title}</h1>
+            <span className="text-2xl text-blue-500 font-medium">
+              ${data?.price}
+            </span>
+            <p className="text-sm lg:text-lg font-light text-justify">
+              {data?.description}
             </p>
-            <div className="flex gap-[30px] items-center">
+
+            <div className="flex gap-5 items-center">
               <button
-                className="w-[50px] h-[50px] flex items-center justify-center cursor-pointer bg-red-200 rounded-lg"
+                className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer bg-red-200 rounded-lg"
                 onClick={() => setQuantity((x) => (x === 1 ? 1 : x - 1))}
               >
                 -
               </button>
               {quantity}
               <button
-                className="w-[50px] h-[50px] flex items-center justify-center cursor-pointer bg-green-200 rounded-lg"
+                className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer bg-green-200 rounded-lg"
                 onClick={() => setQuantity((x) => x + 1)}
               >
                 +
               </button>
             </div>
-            <button className="w-[250px] p-[10px] bg-[#2879FE] text-white flex items-center justify-center gap-[20px] cursor-pointer font-[500]">
+
+            <button
+              className="w-full max-w-[250px] p-2 bg-blue-500 text-white flex items-center justify-center gap-4 cursor-pointer font-medium"
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: data.id,
+                    title: data.title,
+                    price: data.price,
+                    des: data.desc,
+                    img: import.meta.env.VITE_API_UP_URL + data.image.url,
+                    quantity: quantity,
+                  })
+                )
+              }
+            >
               <AddShoppingCartIcon /> ADD TO CART
             </button>
-            <div className="flex gap-[20px]">
-              <div className="flex gap-[10px] text-[#2879FE] align-center text-[14px]">
+
+            <div className="flex gap-5">
+              <div className="flex items-center gap-2 text-blue-500 text-sm">
                 <FavoriteBorderIcon /> ADD TO WISHLIST
               </div>
-              <div className="flex gap-[10px] text-[#2879FE] align-center text-[14px]">
+              <div className="flex items-center gap-2 text-blue-500 text-sm">
                 <BalanceIcon /> ADD TO COMPARE
               </div>
             </div>
-            <div className="flex flex-col gap-[10px] text-gray-500 text-[14px] mt-[30px]">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-shirt</span>
-              <span>Tag: T-shirt, Women, Top</span>
-            </div>
-            <hr className="border-[1px] border-solid border-gray-100" />
-            <div className="flex flex-col gap-[10px] text-gray-500 text-[14px] mt-[30px]">
+
+            <hr className="border-gray-200" />
+
+            <div className="flex flex-col gap-4 text-gray-500 text-sm mt-5">
               <span>DESCRIPTION</span>
-              <hr className="border-[1px] border-solid border-gray-100 w-[250px]" />
+              <hr className="border-gray-200 w-[200px]" />
               <span>ADDITIONAL INFORMATION</span>
-              <hr className="border-[1px] border-solid border-gray-100 w-[250px]" />
+              <hr className="border-gray-200 w-[200px]" />
               <span>FAQ</span>
             </div>
           </div>
@@ -98,6 +116,6 @@ const Product = () => {
       )}
     </div>
   );
-}
+};
 
-export default Product
+export default Product;

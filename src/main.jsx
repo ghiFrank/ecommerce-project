@@ -7,15 +7,17 @@ import Products from './pages/Products';
 import Product from './pages/Product';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import {store} from './redux/store'
+import {Provider} from 'react-redux'
 
 const Layout = () =>{
-  return(
+  return (
     <div className="app">
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </div>
-  )
+  );
 }
 
 const router = createBrowserRouter([
@@ -41,6 +43,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
