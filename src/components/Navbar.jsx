@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import {
-  Search,
-  Menu,
-  Close,
-  ExpandMore,
-} from "@mui/icons-material";
+import { Search, Menu, Close, ExpandMore } from "@mui/icons-material";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import Cart from "./Cart"
+import Cart from "./Cart";
 
 const NavBar = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
@@ -32,34 +26,34 @@ const NavBar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="text-customGray  transition-all duration-300"
+              className="text-customGray transition-all duration-300"
             >
               {isOpen ? <Close /> : <Menu />}
             </button>
           </div>
 
           {/* Centered Logo */}
-          <div className="absolute text-black left-1/2 transform -translate-x-1/2 text-2xl font-bold text-center">
+          <a
+            className="absolute text-black left-1/2 transform -translate-x-1/2 text-2xl font-bold text-center"
+            href="/"
+          >
             MyBrand
-          </div>
+          </a>
 
           {/* Left Menu */}
           <div className="hidden lg:flex items-center space-x-4 font-medium uppercase">
-            <a
-              href="/"
-              className="text-customGray  transition-all duration-300"
-            >
+            <a href="/" className="text-customGray transition-all duration-300">
               Home
             </a>
             <a
               href="/products/1"
-              className="text-customGray  transition-all duration-300"
+              className="text-customGray transition-all duration-300"
             >
               Shop
             </a>
 
             {/* Products Dropdown */}
-            <div className="relative ">
+            <div className="relative">
               <button
                 onClick={toggleProductsMenu}
                 className="flex items-center text-customGray transition-all duration-300 font-medium uppercase"
@@ -85,15 +79,12 @@ const NavBar = () => {
             </div>
 
             <a
-              href="#"
-              className="text-customGray  transition-all duration-300"
+              href="/about"
+              className="text-customGray transition-all duration-300"
             >
               About
             </a>
-            <a
-              href="#"
-              className="text-customGray  transition-all duration-300"
-            >
+            <a href="#" className="text-customGray transition-all duration-300">
               Contact
             </a>
           </div>
@@ -101,10 +92,12 @@ const NavBar = () => {
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
             <button className="text-customGray transition-all duration-300 lg:hidden">
-              <LocalMallOutlinedIcon />
+              <LocalMallOutlinedIcon
+                onClick={() => setIsCartOpen(!isCartOpen)}
+              />
             </button>
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="text-customGray  transition-all duration-300">
+              <button className="text-customGray transition-all duration-300">
                 <Search />
               </button>
               <button className="text-customGray transition-all duration-300">
@@ -114,7 +107,7 @@ const NavBar = () => {
                 <FavoriteBorderOutlinedIcon />
               </button>
               <button
-                className="text-customGray  transition-all duration-300"
+                className="text-customGray transition-all duration-300"
                 onClick={() => setIsCartOpen(!isCartOpen)}
               >
                 <LocalMallOutlinedIcon />
@@ -129,7 +122,7 @@ const NavBar = () => {
             <div className="flex flex-col space-y-4 py-4 text-[14px]">
               <a
                 href="/"
-                className="text-customGray  transition-all duration-300"
+                className="text-customGray transition-all duration-300"
               >
                 Home
               </a>
@@ -144,7 +137,7 @@ const NavBar = () => {
               <div>
                 <button
                   onClick={toggleProductsMenu}
-                  className="flex items-center text-customGray  transition-all duration-300 uppercase text-[14px]"
+                  className="flex items-center text-customGray transition-all duration-300 uppercase text-[14px]"
                 >
                   Products <ExpandMore />
                 </button>
@@ -179,17 +172,18 @@ const NavBar = () => {
               </div>
 
               <a
-                href="#"
-                className="text-customGray  transition-all duration-300"
+                href="/about"
+                className="text-customGray transition-all duration-300"
               >
                 About
               </a>
               <a
                 href="#"
-                className="text-customGray  transition-all duration-300"
+                className="text-customGray transition-all duration-300"
               >
                 Contact
               </a>
+
             </div>
           </div>
         )}

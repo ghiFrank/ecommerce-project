@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import {store} from './redux/store'
 import {Provider} from 'react-redux'
+import About from './pages/About';
 
 const Layout = () =>{
   return (
@@ -22,23 +23,27 @@ const Layout = () =>{
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<Layout/>,
-    children:[
+    path: "/",
+    element: <Layout />,
+    children: [
       {
-        path:"/",
-        element:<Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/products/:id",
-        element:<Products/>
+        path: "/about",
+        element: <About />,
       },
       {
-        path:"/product/:id",
-        element:<Product/>
+        path: "/products/:id",
+        element: <Products />,
       },
-    ]
-  }
+      {
+        path: "/product/:id",
+        element: <Product />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

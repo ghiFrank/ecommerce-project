@@ -1,20 +1,18 @@
-import React from "react"
-import Card from './Card';
-import useFetch from '../hooks/useFetch';
+import React from "react";
+import Card from "./Card";
+import useFetch from "../hooks/useFetch";
 
-const FeaturedProducts = ({type}) => {
+const FeaturedProducts = ({ type }) => {
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${type}`
+  );
 
- const {data,loading,error} = useFetch(
-  `/products?populate=*&[filters][type][$eq]=${type}`
-);
- 
   return (
-    <div className=" mt-[100px] mb-[200px] mx-10">
-      <div className="flex items-center justify-between mb-[50px] text-justify">
-        <h1 className="flex flex-[1] capitalize font-extrabold">
-          {type} products
-        </h1>
-        <p className="flex flex-[3] text-gray-500">
+    <div className="mt-[100px] mb-[200px] mx-10">
+      {/* Heading and Description */}
+      <div className="flex flex-col lg:flex-row items-center justify-between mb-[50px] text-justify gap-5">
+        <h1 className="capitalize font-extrabold text-3xl">{type} products</h1>
+        <p className="text-gray-500 lg:text-left text-center">
           Discover the perfect blend of featured and trending products in our
           exclusive collection. Handpicked for their superior quality and
           craftsmanship, our featured items are timeless essentials that stand
@@ -23,7 +21,9 @@ const FeaturedProducts = ({type}) => {
           in fashion and design.
         </p>
       </div>
-      <div className="flex justify-center gap-[50px]">
+
+      {/* Product Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] justify-center">
         {error
           ? "error"
           : loading
@@ -32,6 +32,6 @@ const FeaturedProducts = ({type}) => {
       </div>
     </div>
   );
-}
+};
 
-export default FeaturedProducts
+export default FeaturedProducts;
